@@ -102,7 +102,7 @@ def open_account(accounts):
     accounts[account_number]['transactions'].append(transaction)
 
     print(f'Uplata od {deposit_amount:.2f}{currency} je uspješno unešena. Novo stanje računa je {accounts[account_number]["balance"]:.2f}{currency}.')
-
+    print()
 
 
 def display_balance(accounts):
@@ -112,6 +112,7 @@ def display_balance(accounts):
     account_number = input("Unesite broj računa: ")
     if account_number in accounts:
         print(f"Stanje na računu: {accounts[account_number]['balance']:.2f} EUR")
+        print()
     else:
         print("Račun nije pronađen.")
 
@@ -182,7 +183,7 @@ def time_deposit(accounts):
 
     if account_number in accounts:
         if deposit_amount <= accounts[account_number]['balance']:
-            accounts[account_number]['balance'] -= deposit_amount   # subtract the deposit amount from the balance
+            accounts[account_number]['balance'] -= deposit_amount   
             interest = deposit_amount * (1 + 0.02) ** years
             transaction = {
                 'date': datetime.datetime.now().date().strftime("%d.%m.%Y"),

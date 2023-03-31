@@ -115,13 +115,27 @@ def display_balance(accounts):
     else:
         print("Račun nije pronađen.")
 
+# def display_transactions(accounts):
+#     account_number = input("Unesite broj računa: ")
+#     if account_number in accounts:
+#         for transaction in accounts[account_number]['transactions']:
+#             print(transaction)
+#     else:
+#         print("Račun nije pronađen.")
+
 def display_transactions(accounts):
     account_number = input("Unesite broj računa: ")
     if account_number in accounts:
-        for transaction in accounts[account_number]['transactions']:
-            print(transaction)
+        print(f"{'ID':<5} | {'Datum':<10} | {'Vrijeme':<8} | {'Iznos':<10} | {'Broj Računa':^15}| Opis plaćanja")
+        for i, transaction in enumerate(accounts[account_number]['transactions']):
+            transaction_id = i + 1
+            date = transaction['date']
+            time = transaction['time']
+            amount = str(transaction['amount']) + " EUR"
+            description = transaction['description']
+            print(f"{transaction_id:<5} | {date:^10} | {time:^8} | {amount:>10}| {account_number:^15}| {description}")
     else:
-        print("Račun nije pronađen.")
+        print("Račun nije pronađen.") 
 
 def deposit(accounts):
     account_number = input("Unesite broj računa: ")
